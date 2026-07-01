@@ -6,7 +6,7 @@
 
     <!-- bean definitions here -->
     
-    <bean class="com.sk.PaymentService" autowire="byType">
+    <bean class="com.sk.PaymentService" autowire="byType" scope="prototype">
     
     <!-- 
     	Auto-wire byName work like setter injection if the setter name match it inject the dependency 
