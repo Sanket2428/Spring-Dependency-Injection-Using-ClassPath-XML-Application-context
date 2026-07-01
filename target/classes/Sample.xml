@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    <bean class="com.sk.PaymentService" autowire="byType">
+    
+    <!-- 
+    	Auto-wire byName work like setter injection if the setter name match it inject the dependency 
+    	<bean class="com.sk.PaymentService" autowire="byName">
+    -->
+    
+    <!-- 
+    	<bean class="com.sk.PaymentService" autowire="constructor">
+    	
+    	This is by constructor injection using auto-wire but the problem is you have to define primary as true.
+    	Then only it work for the more that one implemented classes.
+    	
+    	<bean id="payment" class="com.sk.Upi" primary="false"></bean>
+		<bean id="debit" class="com.sk.Debit" primary="true"></bean>
+    	
+     -->
+     
+     <!-- 
+     	<bean class="com.sk.PaymentService" autowire="byType">
+     	
+     	This is simply similar to the field level injection, in this type also you have to give priority.
+      -->
+    
+    <!-- 
+    	- This is known as a constructor level injection
+    	- <constructor-arg ref="upi"></constructor-arg>
+    	- <constructor-arg ref="debit"></constructor-arg>
+    	
+   	-->
+   	<!-- 
+   		This is the setter lavel injection 
+   		<property name="payment" ref="debit"></property>
+   		
+   	-->
+    </bean>
+	<bean id="payment" class="com.sk.Upi" primary="false"></bean>
+	<bean id="debit" class="com.sk.Debit" primary="true"></bean>
+	    
+
+</beans>
